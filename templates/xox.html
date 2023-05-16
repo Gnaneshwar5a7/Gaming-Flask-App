@@ -1,0 +1,79 @@
+<div class="container-fluid" name="box">
+    <center>
+        <h1 class="msg container">Play Now</h1>
+        <table class="board table table-bordered border-primary">
+            <tr>
+                <td><button class="btn" onclick="play(0)"></button></td>
+                <td><button class="btn" onclick="play(1)"></button></td>
+                <td><button class="btn" onclick="play(2)"></button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" onclick="play(3)"></button></td>
+                <td><button class="btn" onclick="play(4)"></button></td>
+                <td><button class="btn" onclick="play(5)"></button></td>
+            </tr>
+            <tr>
+                <td><button class="btn" onclick="play(6)"></button></td>
+                <td><button class="btn" onclick="play(7)"></button></td>
+                <td><button class="btn" onclick="play(8)"></button></td>
+            </tr>
+        </table>
+        <button class="btn btn-outline-primary" onclick="play(-1)">Restart</button>
+    </center>
+
+</div>
+<script>
+    var board = {
+        0: '', 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: ''
+    };
+    var cell = document.getElementsByClassName("btn");
+    var xhr = new XMLHttpRequest();
+    var op = 2;
+    function play(n) {
+        xhr.open('POST', '/xox');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // console.log(xhr.responseText);
+                if (xhr.response === '-1') {
+                    alert("Make another Move!")
+                }
+                else {
+                    for (var i = 1; i < 10; i++) {
+                        if (String(xhr.response[i - 1]) !== '-') {
+                            if (String(xhr.response[i - 1]) == "X") {
+                                cell[i].innerHTML = "<img src='static/x.png'>";
+                            }
+                            else {
+                                cell[i].innerHTML = "<img src='static/o.png'>";
+                            }
+                        }
+                        else {
+                            cell[i].innerHTML = null;
+                        }
+                    }
+
+                    var m = document.getElementsByClassName('msg')[0];
+                    var t = document.getElementsByClassName('board')[0];
+                    if (xhr.response[9] == '1') {
+                        m.innerHTML = 'You Won';
+                        m.style.color = 'green';
+                    }
+                    else if (xhr.response[9] == '2') {
+                        m.innerHTML = 'You Lost';
+                        m.style.color = 'red';
+                    }
+                    else if (xhr.response[9] == '0') {
+                        m.innerHTML = 'Game Tie!';
+                    }
+                    else {
+                        m.innerHTML = 'Play Now'
+                        m.style.color = 'black';
+                    }
+                }
+            }
+        };
+        xhr.send(JSON.stringify({ 'cell_id': n }));
+
+    }
+</script>
