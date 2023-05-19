@@ -43,7 +43,7 @@
                     alert("Make another Move!")
                 }
                 else {
-                    for (var i = 1; i < 10; i++) {
+                    for (var i = 0; i < 9; i++) {
                         if (String(xhr.response[i - 1]) !== '-') {
                             if (String(xhr.response[i - 1]) == "X") {
                                 cell[i].innerHTML = "<img src='static/x.png'>";
