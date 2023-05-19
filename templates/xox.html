@@ -1,4 +1,4 @@
-<div class="container-fluid" name="box">
+<div class="container2 container-fluid" name="box">
     <center>
         <h1 class="msg container">Play Now</h1>
         <table class="board table table-bordered border-primary">
@@ -30,6 +30,10 @@
     var xhr = new XMLHttpRequest();
     var op = 2;
     function play(n) {
+        if(op==1 && n!=-1){
+            alert("Try to Restart");
+        }
+        else{
         xhr.open('POST', '/xox');
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onload = function () {
@@ -58,13 +62,16 @@
                     if (xhr.response[9] == '1') {
                         m.innerHTML = 'You Won';
                         m.style.color = 'green';
+                        op=1
                     }
                     else if (xhr.response[9] == '2') {
                         m.innerHTML = 'You Lost';
                         m.style.color = 'red';
+                        op=1
                     }
                     else if (xhr.response[9] == '0') {
                         m.innerHTML = 'Game Tie!';
+                        op=1
                     }
                     else {
                         m.innerHTML = 'Play Now'
@@ -74,6 +81,7 @@
             }
         };
         xhr.send(JSON.stringify({ 'cell_id': n }));
+    }
 
     }
 </script>

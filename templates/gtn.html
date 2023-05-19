@@ -1,0 +1,56 @@
+<div class="container2"><div class="msg">
+<h1>Guess The Number</h1>
+<input class="number" name='number' value="" type="text" size="40" required><br>
+<button class="btn btn-outline-success" onclick="play(1)">Guess</button>
+<button class="btn btn-outline-success" onclick="play(-1)">Reset</button>
+<h2 class="result"></h2>
+</div>
+<div class="container">
+    <h3>Rules</h3>
+    <ol>
+        <li>You have to use optimal way guess the number with high score.</li>
+        <li>Use the tip that given after every wrong guess.</li>
+        <li>Use Guess button to make a guess.</li>
+        <li>Use Reset button to regenerate the number.</li>
+    </ol>
+</div>
+</div>
+
+<script>
+     var xhr = new XMLHttpRequest();
+     function play(a) {
+        var result=document.getElementsByClassName('result')[0];
+        result.innerHTML="";
+
+        xhr.open('POST', '/guessnumber');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        var n=document.getElementsByClassName('number')[0]
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                n.value=""
+                var x=xhr.responseText
+                if(x=='1'){
+                    result.innerHTML="You guessed higher number than Original";
+                    result.style.color="red";
+                }
+                else if(x=='-1'){
+                    result.innerHTML="You guessed lower number than Original";
+                    result.style.color="red";
+                }
+                else if(x==""){
+                    result.innerHTML=""
+                }
+                else{
+                    result.innerHTML="Congratulations!!! You guessed it with the score:"+x;
+                    result.style.color="green";
+                }
+
+            }
+        };
+        if(a==-1){
+            xhr.send(JSON.stringify({ 'number': a }));
+        }
+        xhr.send(JSON.stringify({ 'number': n.value }));
+
+    }
+</script>

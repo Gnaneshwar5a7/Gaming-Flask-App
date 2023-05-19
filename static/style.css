@@ -1,13 +1,25 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
 .container1 {
+    display: flex;
     position: relative;
     background-color: black;
     padding: 20px;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.container2{
+    min-height: 100vh;
+}
+.container1 a{
+    margin: 20px;
 }
 
 img {
-    height: 350px;
-    width: 300px;
+    height: 300px;
+    width: 250px;
 }
 
 .playbtn {
@@ -27,7 +39,9 @@ img {
     width: fit-content;
     margin-top: 30px;
 }
-
+table tr td a{
+    margin: 20px;
+}
 .table tr td {
     width: 100px;
     height: 100px;
@@ -41,12 +55,19 @@ img {
 
 .table tr td button img {
     position: relative;
-    width: 112px;
-    height: 112px;
+    width: 113px;
+    height: 113px;
     left: -19px;
     top: -13px;
 }
 
 .msg {
     text-align: center;
+}
+.number{
+    background-color: aqua;
+    border: none;
+}
+input{
+    margin: 10px;
 }

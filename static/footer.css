@@ -1,0 +1,111 @@
+.footer {
+    width: 100vw;
+    position: relative;
+    z-index: 1;
+    color: white;
+    bottom: 0%;
+}
+#footer1 {
+    display: flex;
+}
+
+.contactinfo {
+    padding-left: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactinfo p {
+    font-size: larger;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: aqua;
+}
+
+.contactinfo a {
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.contactinfo a svg {
+    position: relative;
+    top: 2px;
+}
+
+.college img {
+    padding-left: 50px;
+    height: 50px;
+}
+
+.inforamation {
+    padding-left: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inforamation p {
+    font-size: larger;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: aqua;
+}
+
+.inforamation ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.inforamation ul li {
+    padding-bottom: 5px;
+}
+
+.links {
+    text-decoration: none;
+    color: white;
+}
+
+.Programming {
+    padding-left: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Programming p {
+    font-size: larger;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: aqua;
+}
+
+.Programming ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.Programming ul li {
+    padding-bottom: 5px;
+}
+
+.Social {
+    padding-left: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Social p {
+    font-size: larger;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    color: aqua;
+}
+
+.Social ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+.Social ul li {
+    padding-bottom: 5px;
+}
