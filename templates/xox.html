@@ -30,6 +30,9 @@
     var xhr = new XMLHttpRequest();
     var op = 2;
     function play(n) {
+        if(n==-1){
+            op=2;
+        }
         if(op==1 && n!=-1){
             alert("Try to Restart");
         }
