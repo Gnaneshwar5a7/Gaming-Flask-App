@@ -44,8 +44,8 @@
                 }
                 else {
                     for (var i = 0; i < 9; i++) {
-                        if (String(xhr.response[i - 1]) !== '-') {
-                            if (String(xhr.response[i - 1]) == "X") {
+                        if (String(xhr.response[i]) !== '-') {
+                            if (String(xhr.response[i]) == "X") {
                                 cell[i].innerHTML = "<img src='static/x.png'>";
                             }
                             else {
